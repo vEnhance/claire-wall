@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="keywords" content="claire zhang, blog" />
+        <meta name="description" content="{{ SITESUBTITLE }}" />
+        {# djlint:off #}
+        <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+        {# djlint:on #}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Quicksand:wght@300..700&family=Shadows+Into+Light&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}">
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygment_trac.css">
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+              crossorigin="anonymous">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, user-scalable=no">
+        <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="title">
+                    <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+                </div>
+                <div class="sub-title">
+                    {% if SITESUBTITLE %}{{ SITESUBTITLE }}{% endif %}
+                </div>
+                {% include 'sidebar.html' %}
+            </header>
+            <section>
+                {% block content %}{% endblock %}
+            </section>
+            <footer>
+            </footer>
+        </div>
+        <!-- Scale fix -->
+        <script>
+      var metas = document.getElementsByTagName('meta');
+      var i;
+
+      if (navigator.userAgent.match(/iPhone/i)) {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+          }
+        }
+
+        document.addEventListener("gesturestart", gestureStart, false);
+      }
+
+      function gestureStart() {
+        for (i=0; i<metas.length; i++) {
+          if (metas[i].name == "viewport") {
+            metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+          }
+        }
+      }
+        </script>
+    </body>
+</html>

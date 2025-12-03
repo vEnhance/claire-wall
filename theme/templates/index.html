@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if articles %}
+        {% for article in articles_page.object_list %}
+            <h5>{% include 'article_infos.html' %}</h5>
+            {{ article.content }}
+            <hr />
+        {% endfor %}
+        {# pagination if necessary #}
+        {% if articles_page.has_next() or articles_page.has_previous() %}
+            {% include 'pagination.html' %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

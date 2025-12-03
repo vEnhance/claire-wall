@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }} | {{ SITENAME }}{% endblock %}
+{% block content %}
+    <section id="content" class="body">
+        <article>
+            <div class="entry-content">
+                <h5>{% include 'article_infos.html' %}</h5>
+                {{ article.content }}
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+{% endblock %}

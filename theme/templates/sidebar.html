@@ -1,0 +1,13 @@
+{% if DISPLAY_PAGES_ON_MENU -%}
+    <p>
+        <div class="view">
+            <a href="/">Top</a>
+            {% for page in pages %}
+                •
+                <a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a>
+            {% endfor %}
+            •
+            <a href="{{ SITEURL }}/archives.html">All</a>
+        </div>
+    </p>
+{% endif %}

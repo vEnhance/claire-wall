@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <section id="content" class="body">
+        <h1>Archive by month</h1>
+        {% for year, year_articles in articles|groupby('date.year')|sort(reverse=True) %}
+            {% for month, month_articles in year_articles|groupby('date.month')|sort(reverse=True) %}
+                <h3>{{ month_articles[0].date.strftime("%B %Y") }}</h3>
+                <ul>
+                    {% for article in month_articles|sort(attribute='date',reverse=True) %}
+                        <li>{% include "article_infos.html" %}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endfor %}
+    </section>
+{% endblock %}
